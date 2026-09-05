@@ -1,0 +1,9 @@
+{
+  "name": "ridewise-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ridewise frontend and backend for the Uber ride platform demo",
+  "scripts": {
+    "start": "node backend/server.js"
+  }
+}

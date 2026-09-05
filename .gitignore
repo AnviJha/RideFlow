@@ -1,0 +1,32 @@
+@"
+# CMake build files
+build/
+build_windows/
+cmake-build-debug/
+
+# IDE settings
+.idea/
+.vscode/
+
+# macOS files
+.DS_Store
+
+# C++ compiled files
+*.exe
+*.out
+*.o
+*.obj
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Node
+node_modules/
+
+# Environment variables
+.env
+.env.*
+"@ | Set-Content .gitignore

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f3ee">
+  <title>Ridewise | City rides, made simple</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Ridewise home"><span class="brand-mark">R</span><span>ridewise</span></a>
+      <nav class="topnav" aria-label="Primary navigation">
+        <a class="active" href="#book">Book a ride</a>
+        <a href="#activity">Activity</a>
+      </nav>
+      <button class="profile-button" type="button" aria-label="Open profile"><span class="avatar">A</span><span>Asha</span><span class="chevron">&#8964;</span></button>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="book">
+        <div class="hero-copy">
+          <p class="eyebrow">DELHI NCR <span class="live-dot"></span> LIVE NETWORK</p>
+          <h1>Go somewhere<br><em>worth going.</em></h1>
+          <p class="hero-subtitle">Book a reliable ride across the city in a few calm clicks.</p>
+        </div>
+        <div class="network-note"><span class="network-icon">&#9678;</span><span><strong>6 hubs</strong><br>connected right now</span></div>
+      </section>
+
+      <section class="workspace" aria-label="Ride booking workspace">
+        <div class="map-panel">
+          <div class="map-toolbar"><span class="map-label"><span class="map-pin">&#9679;</span> DELHI NCR NETWORK</span><button class="map-control" type="button" aria-label="Center map">&#8982;</button></div>
+          <div class="city-map" id="cityMap" aria-label="Stylized map of Delhi NCR">
+            <div class="road road-a"></div><div class="road road-b"></div><div class="road road-c"></div><div class="road road-d"></div>
+            <div class="district d1">CENTRAL</div><div class="district d2">SOUTH</div><div class="district d3">WEST</div><div class="district d4">EAST</div>
+            <button class="map-place place-cp" data-place="CP" type="button"><span></span><b>Connaught Place</b></button>
+            <button class="map-place place-kb" data-place="KB" type="button"><span></span><b>Karol Bagh</b></button>
+            <button class="map-place place-hk" data-place="HK" type="button"><span></span><b>Hauz Khas</b></button>
+            <button class="map-place place-saket" data-place="SAKET" type="button"><span></span><b>Saket</b></button>
+            <button class="map-place place-dwarka" data-place="DWARKA" type="button"><span></span><b>Dwarka</b></button>
+            <button class="map-place place-noida" data-place="NOIDA" type="button"><span></span><b>Noida 18</b></button>
+            <div class="route-line" id="routeLine"></div>
+            <div class="map-legend"><span><i class="legend-dot pickup"></i> Pickup</span><span><i class="legend-dot dropoff"></i> Drop-off</span></div>
+          </div>
+        </div>
+
+        <aside class="booking-panel">
+          <div class="panel-heading"><div><p class="section-kicker">YOUR JOURNEY</p><h2>Where to?</h2></div><span class="step-count">01 <i></i> 02</span></div>
+          <form id="bookingForm">
+            <div class="location-fields">
+              <label class="location-field pickup-field"><span class="field-icon">&#9679;</span><span class="field-content"><small>Pickup location</small><select id="pickup" required></select></span></label>
+              <span class="connector"></span>
+              <label class="location-field dropoff-field"><span class="field-icon">&#9632;</span><span class="field-content"><small>Drop-off location</small><select id="dropoff" required></select></span></label>
+            </div>
+            <div class="field-row"><label class="select-field"><span>Ride type</span><select id="vehicle"><option value="SEDAN">Sedan <small>4 seats</small></option><option value="SUV">SUV <small>6 seats</small></option><option value="BIKE">Bike <small>1 seat</small></option><option value="AUTO">Auto <small>3 seats</small></option></select></label><label class="select-field"><span>Pricing</span><select id="pricing"><option value="normal">Standard</option><option value="pool">Pool - 25% less</option><option value="surge">Priority - 1.5x</option></select></label></div>
+            <div class="estimate-card"><div><span class="estimate-label">ESTIMATED FARE</span><strong id="fare">Rs 0.00</strong></div><div class="estimate-meta"><span id="tripDistance">0 km</span><span class="meta-dot"></span><span id="tripTime">0 min</span></div></div>
+            <button class="primary-button" type="submit"><span>Find my ride</span><span class="button-arrow">&#8599;</span></button>
+            <p class="secure-note"><span>&#10003;</span> Free cancellation before your driver arrives</p>
+          </form>
+        </aside>
+      </section>
+
+      <section class="nearby-section" aria-labelledby="nearby-heading"><div class="section-title-row"><div><p class="section-kicker">THE NETWORK</p><h2 id="nearby-heading">Drivers nearby</h2></div><span class="availability"><i></i> 4 available now</span></div><div class="driver-grid" id="driverGrid"></div></section>
+
+      <section class="activity-section" id="activity" aria-labelledby="activity-heading"><div class="section-title-row"><div><p class="section-kicker">YOUR RIDES</p><h2 id="activity-heading">Recent activity</h2></div><button class="text-button" id="clearActivity" type="button">Clear all <span>&#8599;</span></button></div><div class="activity-list" id="activityList"></div></section>
+    </main>
+    <footer><span>ridewise <span class="footer-dot">&#183;</span> City mobility, thoughtfully designed</span><span>Support <span class="footer-dot">&#183;</span> Safety <span class="footer-dot">&#183;</span> Terms</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
